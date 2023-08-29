@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>团队介绍</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 获取每日一言
+            fetchDailyQuote();
+
+            // 菜单栏按钮颜色变化
+            $(".menu-button").hover(function() {
+                $(this).addClass("hovered");
+            }, function() {
+                $(this).removeClass("hovered");
+            });
+        });
+
+        function fetchDailyQuote() {
+            $.ajax({
+                url: "https://v.api.aa1.cn/api/yiyan/index.php",
+                dataType: "html",
+                success: function(data) {
+                    var trimmedData = data.trim();
+                    var startIndex = trimmedData.indexOf(">") + 1;
+                    var endIndex = trimmedData.lastIndexOf("<");
+                    var quote = trimmedData.substring(startIndex, endIndex);
+                    var dailyQuote = "每日一言：" + quote;
+                    $("#daily-quote").text(dailyQuote);
+                },
+                error: function(xhr, status, error) {
+                    console.log("获取每日一言失败：");
+                    console.log("状态码：" + xhr.status);
+                    console.log("错误信息：" + error);
+                    $("#daily-quote").text("每日一言：获取失败");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>团队名称</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="menu-button">主页</a></li>
+                <li><a href="team/index.html" class="menu-button">团队介绍</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="content-left">
+            <h2>团队概况</h2>
+            <p>请输入团队概况</p>
+            
+            <h2>我们的理念</h2>
+            <p>请输入核心理念</p>
+            
+            <h2>我们的产品</h2>
+            <ul>
+                <li>产品A</li>
+                <li>产品B</li>
+                <li>正在制作，敬请期待...</li>
+            </ul>
+        </div>
+    </main>
+    
+    <footer>
+        <div id="daily-quote"></div>
+        <p>版权所有 &copy; 2023 团队名称</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>张三的详细信息</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* 成员详细信息样式 */
+        .member-details {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .member-details h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .member-details p {
+            color: #666;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .member-details {
+            animation: fadeIn 1s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>星火团队</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html" class="menu-button">主页</a></li>
+                <li><a href="../index.html" class="menu-button">团队介绍</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="member-details">
+            <h2>张三</h2>
+            <p>职位：前端工程师</p>
+            <p>开发经历：拥有5年的前端开发经验，熟悉HTML、CSS和JavaScript。</p>
+            <p>座右铭：Stay hungry, stay foolish.</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>版权所有 &copy; 2023 团队名称</p>
+    </footer>
+</body>
+</html>
